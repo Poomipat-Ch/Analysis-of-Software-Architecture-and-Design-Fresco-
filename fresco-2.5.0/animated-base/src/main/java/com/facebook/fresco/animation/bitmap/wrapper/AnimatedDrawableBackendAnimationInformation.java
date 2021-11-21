@@ -1,0 +1,38 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ * 
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+package com.facebook.fresco.animation.bitmap.wrapper;
+
+import com.facebook.fresco.animation.backend.AnimationInformation;
+import com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend;
+import com.facebook.infer.annotation.Nullsafe;
+/**
+ *  {@link AnimationInformation} that wraps an {@link AnimatedDrawableBackend}. 
+ */
+@Nullsafe(Nullsafe.Mode.STRICT)
+public class AnimatedDrawableBackendAnimationInformation implements com.facebook.fresco.animation.backend.AnimationInformation {
+  private final com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend mAnimatedDrawableBackend;
+
+  public AnimatedDrawableBackendAnimationInformation(com.facebook.imagepipeline.animated.base.AnimatedDrawableBackend animatedDrawableBackend) {
+    mAnimatedDrawableBackend = animatedDrawableBackend;
+  }
+
+  @Override
+  public int getFrameCount() {
+    return mAnimatedDrawableBackend.getFrameCount();
+  }
+
+  @Override
+  public int getFrameDurationMs(int frameNumber) {
+    return mAnimatedDrawableBackend.getDurationMsForFrame(frameNumber);
+  }
+
+  @Override
+  public int getLoopCount() {
+    return mAnimatedDrawableBackend.getLoopCount();
+  }
+
+}
